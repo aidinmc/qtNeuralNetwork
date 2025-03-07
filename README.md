@@ -1,5 +1,5 @@
 # qtNeuralNetwork
-A simple neural network with a single hidden layer.
+A simple Qt neural network with a single hidden layer.
 
 ## Usage
 ```cpp
@@ -16,7 +16,7 @@ A simple neural network with a single hidden layer.
     double * outputs = new double[outputCount];
     outputs[0] = 0.12;
 
-    for(int i = 0; i < 2; i++){
+    for(int i = 0; i < inputCount; i++){
         Neuron * neuron = new Neuron();
         neuron->setValue(inputs[i]);
         network->appendInputNeuron(neuron);
@@ -35,11 +35,11 @@ A simple neural network with a single hidden layer.
 
     network->train();
 
-    double * testInuts = new double[inputCount];
-    testInuts[0] = 0.3;
-    testInuts[1] = 0.4;
+    double * testInputs = new double[inputCount];
+    testInputs[0] = 0.3;
+    testInputs[1] = 0.4;
 
-    QList<Neuron*>* result = network->predict(testInuts);
+    QList<Neuron*>* result = network->predict(testInputs);
 
     for(int i = 0; i < result->size(); i++){
         qDebug() << (*result)[i]->getPredictedValue();
